@@ -1,2 +1,7 @@
-<div data-controller="hello">
+<div>
+  <%= form_for @letter, remote: true do |f| %>
+    <%= f.text_area :body %>
+    From: <%= f.text_field :sender %>
+    <%= f.submit "Send" %>
+  <% end %>
 </div>
