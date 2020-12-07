@@ -1,14 +1,21 @@
 <!DOCTYPE html>
-<html>
+<html class="h-full">
   <head>
     <title>HandsOffErrorHandling</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application' %>
   </head>
 
-  <body data-controller="errors" data-action="ajax:error->errors#showError">
-    <%= yield %>
+  <body 
+    class="snow-falling bg-blue-200 h-full flex items-center justify-items-center"
+    data-controller="errors" 
+    data-action="ajax:error->errors#showError"
+    >
+    <div class="mx-2 sm:m-auto max-w-screen-sm flex-grow">
+      <%= yield %>
+    </div>
   </body>
 </html>

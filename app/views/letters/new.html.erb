@@ -1,7 +1,8 @@
-<div>
+<div class="border-red-600 rounded border-solid border-4 p-2">
   <%= form_for @letter, remote: true do |f| %>
-    <%= f.text_area :body %>
-    From: <%= f.text_field :sender %>
+    <div>Write your message to Santa and we'll make sure it gets to him safely!</div>
+    <div><%= f.text_area :body, class: "w-full" %></div>
+    <div>From: <%= f.text_field :sender %></div>
     <%= f.submit "Send" %>
   <% end %>
 </div>
