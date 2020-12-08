@@ -1,11 +1,14 @@
 class Letter < ApplicationRecord
+  validates :body, :sender, presence: true
+
   def deliver
-    # save
-    alert_elves
-    address_letter
-    apply_stamp
-    sprinkle_magic
-    post
+    if save
+      alert_elves
+      address_letter
+      apply_stamp
+      sprinkle_magic
+      post
+    end
   end
 
   private

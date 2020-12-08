@@ -1,8 +1,23 @@
+<% if @letter.errors.any? %>
+  <% content_for :alert do %>
+    Sorry, that didn't work. 
+    Please fix the <%= "issue".pluralize(@letter.errors.count) %> below and try again
+  <% end %>
+<% end %>  
+
 <div class="border-red-600 rounded border-solid border-4 p-2">
-  <%= form_for @letter, remote: true do |f| %>
+  <%= form_for @letter, remote: true, 
+    data: { action: "ajax:success->page-renderer#render" } do |f| %>
     <div>Write your message to Santa and we'll make sure it gets to him safely!</div>
-    <div><%= f.text_area :body, class: "w-full" %></div>
-    <div>From: <%= f.text_field :sender %></div>
+
+    <div>
+      <%= f.text_area :body, class: "w-full" %>
+      <%= render "ui/validation_errors", errors: f.object.errors[:body] %>    
+    </div>
+    <div>
+      From: <%= f.text_field :sender %>
+      <%= render "ui/validation_errors", errors: f.object.errors[:sender] %>    
+    </div>
     <%= f.submit "Send" %>
   <% end %>
 </div>

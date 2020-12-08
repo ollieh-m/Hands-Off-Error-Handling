@@ -3,7 +3,7 @@ class ErrorsController < ApplicationController
     @error_status = error_status
 
     if ajax_request?
-      render plain: "error message", status: error_status
+      render plain: error_status, status: error_status
     end
   end
 

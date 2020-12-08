@@ -9,7 +9,7 @@ class LettersController < ApplicationController
     if @letter.deliver
       redirect_to new_letter_path
     else
-      render :new
+      render :new 
     end
   end
 
