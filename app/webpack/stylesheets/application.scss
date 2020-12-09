@@ -10,3 +10,9 @@
   left: 50%;
   transform: translate(-50%, -50%);
 }
+
+.field_with_errors {
+  input, textarea {
+    border: solid 1px red;
+  }
+}
