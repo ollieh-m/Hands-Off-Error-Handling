@@ -5,23 +5,25 @@
   <% end %>
 <% end %>  
 
-<div class="border-red-600 rounded border-solid border-4 p-2">
-  <%= form_for @letter, remote: true, 
-    data: { action: "ajax:success->page-renderer#render" } do |f| %>
-    <div class="mb-4 text-center text-red-600 font-bold text-xl">
-      Write your message to Santa and we'll make sure it gets to him safely!
-    </div>
+<div class="mx-2 sm:m-auto max-w-screen-sm flex items-center">
+  <div class="border-red-600 rounded border-solid border-4 p-2">
+    <%= form_for @letter, remote: false, 
+      data: { action: "ajax:success->page-renderer#render ajax:error->errors#foo" } do |f| %>
+      <div class="mb-4 text-center text-red-600 font-bold text-xl">
+        Write your message to Santa and we'll make sure it gets to him safely!
+      </div>
 
-    <div class="mb-2">
-      <%= f.text_area :body, placeholder: "Dear Santa", class: "w-full bg-white bg-opacity-75 h-64 p-2 resize-none block" %>
-      <%= render "ui/validation_errors", errors: f.object.errors[:body] %>    
-    </div>
-    <div>
-      <%= f.text_field :sender, placeholder: "Your Name", class: "p-2 bg-white bg-opacity-75 w-1/2" %>
-      <%= render "ui/validation_errors", errors: f.object.errors[:sender] %>    
-    </div>
-    <div class="flex justify-center mt-6">
-      <%= f.submit "Send", class: "rounded px-8 py-2 bg-green-500 cursor-pointer text-white" %>
-    </div>
-  <% end %>
+      <div class="mb-2">
+        <%= f.text_area :body, placeholder: "Dear Santa", class: "w-full bg-white bg-opacity-75 h-64 p-2 resize-none block" %>
+        <%= render "ui/validation_errors", errors: f.object.errors[:body] %>    
+      </div>
+      <div>
+        <%= f.text_field :sender, placeholder: "Your Name", class: "p-2 bg-white bg-opacity-75 w-1/2" %>
+        <%= render "ui/validation_errors", errors: f.object.errors[:sender] %>    
+      </div>
+      <div class="flex justify-center mt-6">
+        <%= f.submit "Send", class: "rounded px-8 py-2 bg-green-500 cursor-pointer text-white" %>
+      </div>
+    <% end %>
+  </div>
 </div>

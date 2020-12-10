@@ -2,20 +2,58 @@ class Letter < ApplicationRecord
   validates :body, :sender, presence: true
 
   def deliver
-    if save
-      alert_elves
-      address_letter
-      apply_stamp
-      sprinkle_magic
-      post
+    transaction do
+      if save
+        alert_elves
+        address_letter
+        apply_stamp
+        sprinkle_magic
+        post
+      end
     end
   end
 
   private
 
+    # save
+    # alert_elves
+    # address_letter
+    # apply_stamp
+    # sprinkle_magic
+    # post
+
+    # if save
+    #   if alert_elves
+    #     if address_letter
+    #       if apply_stamp
+    #         if sprinkle_magic
+    #           post
+    #         end
+    #       end
+    #     end
+    #   end
+    # end
+
+    # return unless save
+    # return unless alert_elves
+    # return unless address_letter
+    # return unless apply_stamp
+    # return unless sprinkle_magic
+    # post
+
+    # in_sequence do
+    #   [
+    #     ->{ save },
+    #     ->{ alert_elves },
+    #     ->{ address_letter },
+    #     ->{ apply_stamp },
+    #     ->{ sprinkle_magic },
+    #     ->{ post }
+    #   ]
+    # end
     # def in_sequence
     #   yield.each do |step|
-    #     if step
+    #     if step.call
     #       next
     #     else
     #       return false
@@ -23,6 +61,44 @@ class Letter < ApplicationRecord
     #   end
 
     #   true
+    # end
+
+    # transaction do
+    #   if save
+    #     alert_elves
+    #     address_letter
+    #     apply_stamp
+    #     sprinkle_magic
+    #     post
+    #   end
+    # end
+
+    # begin
+    #   transaction do
+    #     save!
+    #     alert_elves
+    #     address_letter
+    #     apply_stamp
+    #     sprinkle_magic
+    #     post
+    #   end
+    # rescue ActiveRecord::RecordInvalid
+    # end
+
+    # begin
+    #   transaction do
+    #     if save
+    #       alert_elves
+    #       address_letter
+    #       apply_stamp
+    #       sprinkle_magic
+    #       post
+    #     end
+    #   end
+    # rescue FailedStepError => e
+    #   errors.add(:base, e.message)
+
+    #   false
     # end
 
     def alert_elves
@@ -38,6 +114,6 @@ class Letter < ApplicationRecord
     end
 
     def post
-      Letter.find(1000059595)
+      raise "Oops, that went wrong"
     end
 end

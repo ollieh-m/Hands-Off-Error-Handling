@@ -5,6 +5,7 @@ export default class extends Controller {
 
   showError(event) {
     this.alertTarget.innerText = this._extractMessage(event)
+    this.alertTarget.classList.remove("hidden")
   }
 
   // private
