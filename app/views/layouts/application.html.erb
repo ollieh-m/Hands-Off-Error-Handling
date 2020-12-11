@@ -15,13 +15,7 @@
     data-action="ajax:error->errors#showError"
     >
     <div data-page-renderer-target="page" class="w-full h-full flex">
-      <div 
-        class="fixed top-0 left-0 p-4 w-full bg-red-600 text-white text-center <%= 'hidden' unless content_for(:alert) %>"
-        data-errors-target="alert"
-        >
-        <%= content_for :alert %>
-      </div>
-
+      <%= render "ui/alert" %>
       <%= yield %>
     </div>
   </body>
