@@ -4,12 +4,18 @@ export default class extends Controller {
   static targets = [ "page" ]
 
   render(event) {
-    this.pageTarget.replaceWith(
-      this._extractPage(event)
-    )
+    if (this._extractContentType(event).startsWith("text/html")) {
+      this.pageTarget.replaceWith(
+        this._extractPage(event)
+      )
+    }
   }
 
   // private
+
+  _extractContentType(event) {
+    return event.detail[2].getResponseHeader("Content-Type")
+  }
 
   _extractPage(event) {
     var element = document.createElement('div')

@@ -1,6 +1,8 @@
 class Letter < ApplicationRecord
   validates :body, :sender, presence: true
 
+  scope :recent_first, -> { order(created_at: :desc) }
+
   def deliver
     transaction do
       if save
@@ -114,6 +116,7 @@ class Letter < ApplicationRecord
     end
 
     def post
-      raise "Oops, that went wrong"
+      # raise "Oops, that went wrong"
+      true
     end
 end

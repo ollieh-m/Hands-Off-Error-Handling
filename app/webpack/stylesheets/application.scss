@@ -4,15 +4,12 @@
   background-image: url("../images/snow.gif");
 }
 
-.centered {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
 .field_with_errors {
   input, textarea {
     border: solid 1px red;
   }
+}
+
+.fade {  
+  transition: background-color 1s ease-in-out;
 }

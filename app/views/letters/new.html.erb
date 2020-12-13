@@ -7,8 +7,9 @@
 
 <div class="mx-2 sm:m-auto max-w-screen-sm flex items-center">
   <div class="border-red-600 rounded border-solid border-4 p-2">
-    <%= form_for @letter, remote: false, 
-      data: { action: "ajax:success->page-renderer#render ajax:error->errors#foo" } do |f| %>
+    <%= form_for @letter, 
+      remote: true, 
+      data: { action: "ajax:success->page-renderer#render" } do |f| %>
       <div class="mb-4 text-center text-red-600 font-bold text-xl">
         Write your message to Santa and we'll make sure it gets to him safely!
       </div>

@@ -5,7 +5,6 @@ class ErrorsController < ApplicationController
     if ajax_request?
       render plain: error_status, status: error_status
     end
-    flash.now[:alert] = "Flash message"
   end
 
   private

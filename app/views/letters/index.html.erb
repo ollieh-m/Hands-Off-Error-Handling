@@ -1,0 +1,10 @@
+<div 
+  class="m-2 sm:mx-auto max-w-screen-sm w-full" 
+  data-controller="highlight" 
+  data-highlight-id-value="<%= params[:highlight] %>"
+  data-highlight-highlight-class="bg-green-200"
+  data-highlight-fade-class="fade">
+  <ul>
+    <%= render partial: "letter_preview", collection: @letters, as: :letter %>
+  </ul>
+</div>
