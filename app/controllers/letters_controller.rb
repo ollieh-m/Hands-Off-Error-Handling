@@ -7,13 +7,13 @@ class LettersController < ApplicationController
     @letter = Letter.new
   end
 
-  def create    
+  def create
     @letter = Letter.new(letter_params)
-    
+
     if @letter.deliver
       redirect_to success_path, turbolinks: "advance"
     else
-      render :new 
+      render :new
     end
   end
 

@@ -7,13 +7,15 @@
 
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= stylesheet_pack_tag 'application' %>
-    
+
     <script src="https://kit.fontawesome.com/b8e94b7aaa.js" crossorigin="anonymous"></script>
+
+    <%= yield :meta_tags %>
   </head>
 
-  <body 
+  <body
     class="snow-falling bg-blue-200 h-full"
-    data-controller="errors page-renderer" 
+    data-controller="errors page-renderer"
     data-action="ajax:error->errors#showError"
     >
     <div data-page-renderer-target="page" class="w-full h-full flex">

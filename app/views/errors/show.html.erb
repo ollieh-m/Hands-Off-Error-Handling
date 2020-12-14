@@ -1,2 +1,7 @@
-A nice generic message for <%= @error_status %>
-<%= image_pack_tag "media/images/elf.gif" %>
+<% content_for :alert do %>
+  <%= @error_message %>
+<% end %>
+
+<div class="m-auto">
+  <%= image_pack_tag "media/images/elf.gif", class: "rounded-full" %>
+</div>

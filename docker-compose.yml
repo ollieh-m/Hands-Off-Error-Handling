@@ -1,0 +1,27 @@
+version: '3.5'
+services:
+  postgres:
+    image: postgres:10.4
+    networks:
+      - hands-off
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+    volumes:
+      - ~/docker/volumes/hands-off/postgres:/var/lib/postgresql/data
+    ports:
+      - 5432
+  redis:
+    image: redis:4.0-alpine
+    ports:
+      - 6379
+    volumes:
+      - ~/docker/volumes/hands-off/redis:/data
+    networks:
+      - hands-off
+
+volumes:
+  bundle:
+networks:
+  hands-off:
+    name: hands-off

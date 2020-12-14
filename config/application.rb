@@ -32,6 +32,10 @@ module HandsOffErrorHandling
     # Don't generate system test files.
     config.generators.system_tests = nil
 
-    config.exceptions_app = self.routes
+    config.exceptions_app = routes
+
+    config.action_dispatch.rescue_responses.merge!(
+      "FeatureUnavailable" => :forbidden
+    )
   end
 end

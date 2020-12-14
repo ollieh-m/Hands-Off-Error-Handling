@@ -1,0 +1,2 @@
+class FeatureUnavailable < StandardError
+end
